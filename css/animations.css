@@ -1,0 +1,664 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS — Keyframes, scroll reveals, and lab-specific motion
+   Agustín Martínez Caram PD Portfolio
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   A. KEYFRAMES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Orb drift 1 — slow floating motion */
+@keyframes orb-drift-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 25px) scale(1.08);
+  }
+  66% {
+    transform: translate(15px, -20px) scale(0.94);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Orb drift 2 */
+@keyframes orb-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(25px, -30px) scale(1.1);
+  }
+  70% {
+    transform: translate(-15px, 20px) scale(0.92);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Orb drift 3 */
+@keyframes orb-drift-3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(-20px, 15px);
+  }
+  60% {
+    transform: translate(20px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Fade up entrance */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Horizontal rule grow */
+@keyframes rule-grow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Sequence pulse */
+@keyframes sequence-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  33% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  66% {
+    opacity: 0.7;
+    transform: scale(0.99);
+  }
+}
+
+/* Arrow drop */
+@keyframes arrow-drop {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+}
+
+/* SVG flow trace */
+@keyframes flow-trace {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* AT-LAB I: Biosignal pulse */
+@keyframes bio-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.28;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+}
+
+/* AT-LAB I: Biosignal ring expansion */
+@keyframes bio-pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* AT-LAB II: Line drawing annotation */
+@keyframes line-draw {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+}
+
+/* AT-LAB III: Civic node activation flash */
+@keyframes node-activate {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* AT-LAB IV: Atmospheric breathing */
+@keyframes atmos-breathe {
+  0% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.7;
+    transform: scale(1.04) rotate(1deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.08) rotate(-1deg);
+  }
+  75% {
+    opacity: 0.65;
+    transform: scale(1.03) rotate(0.5deg);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Page hero reveal */
+@keyframes hero-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* AT-LAB IV: Planetary orbit float */
+@keyframes atmos-orbit {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  25% {
+    transform: translateX(20px) translateY(-15px) scale(1.05);
+  }
+  50% {
+    transform: translateX(30px) translateY(10px) scale(0.97);
+  }
+  75% {
+    transform: translateX(-10px) translateY(20px) scale(1.03);
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   B. SCROLL REVEAL SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Content is visible by default; only hide it once JS has confirmed it can reveal it */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+
+.js .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+
+.js .reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children (up to 8 items) */
+.js .reveal-stagger.visible > *:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(2) {
+  transition-delay: 0.07s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(3) {
+  transition-delay: 0.14s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(4) {
+  transition-delay: 0.21s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(5) {
+  transition-delay: 0.28s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(6) {
+  transition-delay: 0.35s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(7) {
+  transition-delay: 0.42s;
+}
+
+.js .reveal-stagger.visible > *:nth-child(8) {
+  transition-delay: 0.49s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   C. FEED-FORWARD ANIMATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.js .feed-forward {
+  opacity: 0;
+}
+
+.js .feed-forward.visible {
+  opacity: 1;
+}
+
+.feed-forward.visible .feed-forward-line {
+  animation: rule-grow 0.8s var(--ease) forwards;
+}
+
+.js .feed-forward.visible .feed-forward-text {
+  animation: fade-in 0.6s var(--ease) 0.4s both;
+}
+
+.js .feed-forward.visible .feed-forward-arrow {
+  animation: arrow-drop 0.5s var(--ease) 0.7s both;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   D. PAGE HERO ENTRANCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.page-hero .eyebrow {
+  animation: fade-in 0.6s var(--ease) 0.1s both;
+}
+
+.page-hero .page-title {
+  animation: fade-up 0.8s var(--ease) 0.2s both;
+}
+
+.page-hero .page-subtitle {
+  animation: fade-up 0.7s var(--ease) 0.35s both;
+}
+
+.page-hero .sec-label {
+  animation: fade-in 0.5s var(--ease) 0.05s both;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   E. AT-LAB I — BIOSIGNAL SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-lab="1"] .page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bio-orb-main {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--lab1-pulse) 0%, transparent 70%);
+  top: -100px;
+  right: -50px;
+  animation: bio-pulse 1.25s ease-in-out infinite;
+}
+
+.bio-orb-ring {
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--lab1-waveform);
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  animation: bio-pulse-ring 2s ease-out infinite;
+}
+
+.bio-orb-ring-2 {
+  width: 280px;
+  height: 280px;
+  border: 1px solid var(--lab1-waveform);
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  animation: bio-pulse-ring 2s ease-out 0.7s infinite;
+}
+
+/* ECG-style section divider */
+.ecg-line {
+  display: block;
+  width: 100%;
+  height: 28px;
+  color: var(--lab1);
+  opacity: 0.3;
+  margin: 1.5rem 0;
+}
+
+/* Heartbeat-accent border on section heads */
+[data-lab="1"] .page-section h2 {
+  border-left: 3px solid var(--lab1);
+  padding-left: 1rem;
+}
+.ecg-line { margin: 1.5rem 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   F. AT-LAB II — ANNOTATION SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.annotation-block {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--lab2);
+  margin: 1.5rem 0;
+}
+
+.annotation-block::before {
+  content: '↳';
+  position: absolute;
+  left: -0.1rem;
+  top: -1.2rem;
+  color: var(--lab2);
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* Underline-draw animation for key terms */
+.draw-underline {
+  position: relative;
+  display: inline;
+}
+
+.draw-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--lab2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease);
+}
+
+.draw-underline.visible::after {
+  transform: scaleX(1);
+}
+
+/* Ruled overlay on the hero for lab2 */
+[data-lab="2"] .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(58, 90, 138, 0.05) 27px,
+    rgba(58, 90, 138, 0.05) 28px
+  );
+  pointer-events: none;
+}
+
+[data-lab="2"] .page-section h2 {
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+[data-lab="2"] .page-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--lab2);
+  animation: rule-grow 0.7s var(--ease) 0.3s both;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   G. AT-LAB III — CIVIC NETWORK SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* SVG network background in hero */
+[data-lab="3"] .page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.civic-network-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.07;
+}
+
+.civic-network-svg circle {
+  fill: var(--lab3-lt);
+  animation: node-activate 1.8s ease-in-out infinite;
+}
+
+.civic-network-svg circle:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.civic-network-svg circle:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.civic-network-svg circle:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.civic-network-svg circle:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+.civic-network-svg line {
+  stroke: var(--lab3);
+  stroke-width: 0.5;
+}
+
+[data-lab="3"] .page-section h2 {
+  color: var(--ink-mid);
+}
+
+[data-lab="3"] .probe-card {
+  border-top: 3px solid var(--lab3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   H. AT-LAB IV — ATMOSPHERIC SYSTEM (light parchment mode)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-lab="4"] .page-section {
+  border-bottom-color: rgba(74, 88, 152, 0.10);
+}
+
+/* Spectral indigo section heading accent */
+[data-lab="4"] .page-section h2 {
+  border-left: 3px solid var(--lab4);
+  padding-left: 1rem;
+}
+
+/* Hero: subtle indigo gradient wash in upper right — spectral, not dark */
+[data-lab="4"] .page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-lab="4"] .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 85% 30%, rgba(74, 88, 152, 0.10) 0%, transparent 60%),
+              radial-gradient(ellipse at 15% 80%, rgba(200, 160, 64, 0.07) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Subtle spectral orbs on parchment — multiply blend reads on warm bg */
+.atmos-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.atmos-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: multiply;
+}
+
+/* Indigo tint — spectral, upper left */
+.atmos-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(74, 88, 152, 0.18) 0%, transparent 70%);
+  top: -200px;
+  left: -100px;
+  animation: atmos-orbit 18s ease-in-out infinite;
+}
+
+/* Warm amber tint — solar, lower right */
+.atmos-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(154, 110, 48, 0.12) 0%, transparent 70%);
+  bottom: -150px;
+  right: -50px;
+  animation: atmos-orbit 24s ease-in-out 3s infinite;
+}
+
+/* Muted rose tint — Martian, mid */
+.atmos-orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(160, 72, 48, 0.09) 0%, transparent 70%);
+  top: 40%;
+  left: 40%;
+  animation: atmos-orbit 30s ease-in-out 7s infinite;
+}
+
+/* Deep indigo trace — upper right */
+.atmos-orb-4 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(46, 60, 140, 0.12) 0%, transparent 70%);
+  top: 20%;
+  right: 30%;
+  animation: atmos-orbit 22s ease-in-out 11s infinite reverse;
+}
+
+#main > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Act item reveals */
+.js [data-lab="4"] .act-item,
+.js[data-lab="4"] .act-item {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.js [data-lab="4"] .act-item.visible,
+.js[data-lab="4"] .act-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   J. REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .reveal,
+  .js .reveal-stagger > *,
+  .js .feed-forward,
+  .js [data-lab="4"] .act-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

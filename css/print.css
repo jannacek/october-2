@@ -1,0 +1,62 @@
+/* ═══════════════════════════════════════════════════════════
+   PRINT STYLESHEET — one clean, ink-light page per section
+   ═══════════════════════════════════════════════════════════ */
+
+@media print {
+  @page { margin: 16mm 14mm; }
+
+  html { font-size: 11pt; }
+
+  body {
+    background: #fff !important;
+    color: #1a1814 !important;
+    line-height: 1.5;
+  }
+
+  #sidebar, .hamburger, .sidebar-overlay, .skip-link, .page-nav,
+  .orb, .home-bg, .atmos-bg, .atmos-orb, .bio-orb, .civic-network-svg,
+  .hero-geo, .hero-ext-links, .toc, .lab4-atmos-bg, .lab1-pulse-bg,
+  .lab2-ruled-overlay, .lab3-network-bg { display: none !important; }
+
+  #main { margin-left: 0 !important; display: block; }
+
+  .page-hero {
+    background: none !important;
+    padding: 0 0 8mm !important;
+    border-bottom: 1.5pt solid #1a1814;
+  }
+  .page-hero::before, .page-hero::after { display: none !important; }
+
+  .page-section {
+    padding: 7mm 0 !important;
+    border-bottom: 0.5pt solid #ccc;
+    background: none !important;
+  }
+
+  h1, h2, h3, h4 { color: #1a1814 !important; break-after: avoid; }
+
+  .card, .lab-block, .role-panel, .callout, .claim, .stat, .diss-item,
+  .assess-item, .tl-item, .archive-entry, tr {
+    break-inside: avoid;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .card, .lab-block, .role-panel, .callout, .claim, .table-wrap, .stat-strip, .legend {
+    background: #fff !important;
+    border-color: #bbb !important;
+  }
+
+  .table-wrap { overflow: visible; }
+  .table-wrap > .data-table { min-width: 0; }
+
+  .chip { border-color: #555 !important; color: #333 !important; }
+  .tag-new { border: 0.5pt solid #888; background: none; color: #333; }
+
+  a { color: #1a1814 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; word-break: break-all; }
+  a[href^="#"]::after, a[href$=".html"]::after { content: ""; }
+
+  .js .reveal, .js .reveal-stagger > *, .js .feed-forward,
+  .js [data-lab="4"] .act-item { opacity: 1 !important; transform: none !important; }
+}

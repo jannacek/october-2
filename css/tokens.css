@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS — PD Assessment Portfolio
+   Agustín Martínez Caram · Hanze UAS · Arts + Creative PD
+   v4 (October 2026) — warm editorial system, Bauhaus structure,
+   Art Deco rules, WCAG-AA text colours
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ──────────────────────────────────────────
+     WARM EDITORIAL PALETTE
+     ────────────────────────────────────────── */
+  --bg-light:    #f5f0e8;    /* main reading surface — warm parchment */
+  --bg-light-2:  #ede8de;    /* cards, sidebar, secondary surfaces */
+  --bg-light-3:  #e4ddd0;    /* hero band, deepened parchment */
+  --bg-light-4:  #dbd4c5;    /* table alternation, strong dividers */
+  --paper:       #fbf8f2;    /* raised surfaces (cards on parchment) */
+
+  --ink:         #1e1a14;    /* near-black body text            15.3:1 */
+  --ink-mid:     #3a2e1e;    /* headings, section titles        11.7:1 */
+  --ink-muted:   #645847;    /* secondary text, captions         6.1:1 */
+  --ink-faint:   #716655;    /* metadata, labels                 5.0:1 */
+
+  --gold:        #9a6e30;    /* brand gold — rules, borders, large type */
+  --gold-text:   #7d5620;    /* gold for small text              5.7:1 */
+  --gold-lt:     #c9a96e;    /* lighter gold, ornaments */
+  --gold-dim:    rgba(154,110,48,0.15);
+  --gold-line:   rgba(154,110,48,0.35);
+
+  --border:      rgba(58, 46, 30, 0.12);
+  --border-strong: rgba(58, 46, 30, 0.26);
+
+  --accent:      #4a7a6e;    /* sage-teal accent — decorative */
+  --accent-text: #3a6a5e;    /* sage-teal for small text         5.4:1 */
+  --accent-dim:  rgba(74,122,110,0.12);
+  --rust:        #a05050;    /* warm rust for flags — decorative */
+  --rust-text:   #8a3f3f;    /* rust for small text              6.5:1 */
+  --rust-dim:    rgba(160,80,80,0.10);
+
+  /* ──────────────────────────────────────────
+     SEMANTIC PAGE TOKENS — always light
+     ────────────────────────────────────────── */
+  --page-bg:            var(--bg-light);
+  --page-surface:       var(--bg-light-2);
+  --page-surface2:      var(--bg-light-3);
+  --page-raised:        var(--paper);
+  --page-text:          var(--ink);
+  --page-text-muted:    var(--ink-muted);
+  --page-text-faint:    var(--ink-faint);
+  --page-border:        var(--border);
+  --page-border-strong: var(--border-strong);
+  --page-gold:          var(--gold);
+  --page-gold-text:     var(--gold-text);
+  --page-gold-lt:       var(--gold-lt);
+
+  /* Sidebar — warm parchment panel */
+  --sidebar-bg:        var(--bg-light-2);
+  --sidebar-border:    var(--border);
+  --sidebar-text:      var(--ink-muted);
+  --sidebar-active:    var(--gold-text);
+  --sidebar-hover-bg:  rgba(154,110,48,0.09);
+
+  /* Hero band — slightly deepened parchment, NOT dark */
+  --hero-bg:           var(--bg-light-3);
+  --hero-text:         var(--ink-mid);
+
+  /* ──────────────────────────────────────────
+     LAB ACCENT TOKENS — conceptually motivated
+     ────────────────────────────────────────── */
+
+  /* AT-LAB I: Health / Biosignal / Body */
+  --lab1:          #3a7a60;
+  --lab1-text:     #2f6a52;
+  --lab1-lt:       #5a9a80;
+  --lab1-dim:      rgba(58,122,96,0.10);
+  --lab1-pulse:    rgba(58,122,96,0.18);
+  --lab1-waveform: rgba(58,122,96,0.35);
+
+  /* AT-LAB II: Teaching / Annotation / Curation */
+  --lab2:          #2e4e7a;
+  --lab2-text:     #2e4e7a;
+  --lab2-lt:       #4a6a9a;
+  --lab2-dim:      rgba(46,78,122,0.09);
+  --lab2-line:     rgba(46,78,122,0.35);
+  --lab2-ruled:    rgba(46,78,122,0.05);
+
+  /* AT-LAB III: Civic / Network / Negotiation */
+  --lab3:          #9a5028;
+  --lab3-text:     #8a4620;
+  --lab3-lt:       #be7040;
+  --lab3-dim:      rgba(154,80,40,0.09);
+  --lab3-node:     rgba(154,80,40,0.15);
+  --lab3-edge:     rgba(154,80,40,0.22);
+
+  /* AT-LAB IV: ATMOS_FERA / Spectral / Indigo */
+  --lab4:          #4a5898;
+  --lab4-text:     #44528f;
+  --lab4-lt:       #6878b8;
+  --lab4-dim:      rgba(74,88,152,0.10);
+  --lab4-atmos:    rgba(74,88,152,0.06);
+  --lab4-venus:    #c8a040;
+  --lab4-mars:     #a04830;
+  --lab4-space:    #1a2870;
+
+  /* Current-lab accent (overridden per page via body[data-lab]) */
+  --lab-now:       var(--gold);
+  --lab-now-text:  var(--gold-text);
+  --lab-now-dim:   var(--gold-dim);
+
+  /* ──────────────────────────────────────────
+     STATUS VOCABULARY (chips) — never colour alone: each has a glyph
+     ────────────────────────────────────────── */
+  --st-done:       #2f6a52;   /* completed / on file */
+  --st-ongoing:    #2e4e7a;   /* running / in consolidation */
+  --st-accepted:   #7d5620;   /* accepted, not yet delivered */
+  --st-review:     #44528f;   /* submitted / under review */
+  --st-prep:       #645847;   /* in preparation */
+  --st-planned:    #645847;   /* upcoming / planned */
+  --st-flag:       #8a3f3f;   /* needs evidence / unverified */
+
+  /* ──────────────────────────────────────────
+     TYPOGRAPHY
+     ────────────────────────────────────────── */
+  --serif:  'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:   'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:   'DM Mono', 'Menlo', 'Consolas', monospace;
+
+  /* ──────────────────────────────────────────
+     TYPE SCALE (fluid)
+     ────────────────────────────────────────── */
+  --fs-display:  clamp(2.8rem, 6vw, 4.4rem);
+  --fs-h1:       clamp(2.2rem, 4.5vw, 3.4rem);
+  --fs-h2:       clamp(1.6rem, 3vw, 2.2rem);
+  --fs-h3:       clamp(1.15rem, 2vw, 1.45rem);
+  --fs-body:     clamp(0.95rem, 1.05vw, 1.06rem);
+  --fs-small:    clamp(0.82rem, 0.9vw, 0.9rem);
+  --fs-label:    0.7rem;
+  --fs-micro:    0.64rem;
+
+  /* ──────────────────────────────────────────
+     SPACING
+     ────────────────────────────────────────── */
+  --sp-page:     clamp(1.4rem, 5vw, 4.5rem);
+  --sp-section:  clamp(3rem, 7vh, 5.5rem);
+  --sp-block:    clamp(2rem, 4vh, 3.5rem);
+  --sp-element:  1.25rem;
+  --content-max: 820px;
+  --content-wide:1080px;
+
+  /* ──────────────────────────────────────────
+     SIDEBAR
+     ────────────────────────────────────────── */
+  --sidebar-w: 252px;
+
+  /* ──────────────────────────────────────────
+     MOTION
+     ────────────────────────────────────────── */
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:  cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in:   cubic-bezier(0.55, 0, 1, 0.45);
+  --dur-fast:  0.22s;
+  --dur-norm:  0.42s;
+  --dur-slow:  0.75s;
+  --dur-lazy:  1.2s;
+
+  /* ──────────────────────────────────────────
+     RADIUS & SHADOW
+     ────────────────────────────────────────── */
+  --r-sm:  3px;
+  --r-md:  7px;
+  --r-lg:  14px;
+  --shadow-soft: 0 1px 0 rgba(58,46,30,0.04), 0 8px 24px -12px rgba(58,46,30,0.18);
+}
+
+/* Per-lab accent (drives hero rule, headings, geometry) */
+body[data-lab="1"] { --lab-now: var(--lab1); --lab-now-text: var(--lab1-text); --lab-now-dim: var(--lab1-dim); }
+body[data-lab="2"] { --lab-now: var(--lab2); --lab-now-text: var(--lab2-text); --lab-now-dim: var(--lab2-dim); }
+body[data-lab="3"] { --lab-now: var(--lab3); --lab-now-text: var(--lab3-text); --lab-now-dim: var(--lab3-dim); }
+body[data-lab="4"] { --lab-now: var(--lab4); --lab-now-text: var(--lab4-text); --lab-now-dim: var(--lab4-dim); }
