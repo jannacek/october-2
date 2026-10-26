@@ -1294,7 +1294,8 @@ p.role-limit {
   letter-spacing: 0.1em;
   font-weight: 400;
   background: var(--page-surface);
-  white-space: nowrap;
+  white-space: normal;
+  vertical-align: bottom;
 }
 
 .data-table td {
